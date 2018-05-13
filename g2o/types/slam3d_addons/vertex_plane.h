@@ -67,8 +67,6 @@ namespace g2o
       virtual int estimateDimension() const {
         return 4;
       }
-
-      Vector3D color;
     };
 
 #ifdef G2O_HAVE_OPENGL

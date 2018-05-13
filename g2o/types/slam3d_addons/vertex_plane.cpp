@@ -32,7 +32,6 @@ namespace g2o
 {
 
   VertexPlane::VertexPlane(){
-    color << .2, .2, .2;
   }
   
   bool VertexPlane::read(std::istream& is) {
@@ -40,7 +39,6 @@ namespace g2o
     for (int i=0; i<4; i++)
       is >> lv[i];
     setEstimate(Plane3D(lv));
-    is >> color(0) >> color(1) >> color(2);
     return true;
   }
 
@@ -49,7 +47,6 @@ namespace g2o
     for (int i=0; i<4; i++){
       os << lv[i] << " ";
     }
-    os << color(0) << " " << color(1) << " " << color(2) << " ";
     return os.good();
   }
 
@@ -90,7 +87,7 @@ namespace g2o
     double d = that->estimate().distance();
     double azimuth = Plane3D::azimuth(that->estimate().normal());
     double elevation = Plane3D::elevation(that->estimate().normal());
-    glColor3f(float(that->color(0)), float(that->color(1)), float(that->color(2)));
+    glColor3f(1.0f, 0.0f, 0.0f);
     glPushMatrix();
     glRotatef(float(RAD2DEG(azimuth)), 0.f, 0.f, 1.f);
     glRotatef(float(RAD2DEG(elevation)), 0.f, -1.f, 0.f);
